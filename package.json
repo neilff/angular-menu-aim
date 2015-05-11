@@ -4,7 +4,8 @@
   "description": "jQuery Menu aim adopted for Angular",
   "main": "component.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run"
+    "test": "./node_modules/karma/bin/karma start --single-run",
+    "postinstall": "node_modules/bower/bin/bower install && node node_modules/gulp/bin/gulp.js build"
   },
   "author": {
     "name": "Neil Fenton"
