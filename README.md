@@ -1,5 +1,14 @@
 # angular-menu-flyout
 
+# TODO:
+
+- Add Travis CI
+- Add gulp tasks for:
+  - changelog
+  - test: karma run
+  - build: concat, uglify, ngmin
+  - dev: watch
+
 # Usage
 
 ```

@@ -1,0 +1,15 @@
+body, html {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+pre {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.navigation {
+  border-bottom: 1px solid black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

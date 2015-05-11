@@ -4,21 +4,32 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     files: [
+      'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'src/**/*.js',
-      'test/**/*Spec.js'
+      'src/flyout.js',
+      'src/flyout-tpls.js',
+      'tests/utils.js',
+      'tests/flyout.test.js',
+      'tests/flyout-tpls.test.js'
     ],
-    frameworks: ['jasmine'],
+    frameworks: ['mocha', 'chai', 'sinon', 'sinon-chai'],
     exclude: [],
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
     port: 9876,
     runnerPort: 9100,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
     captureTimeout: 60000,
-    singleRun: false
+    singleRun: false,
+    preprocessors: {
+      'src/**/!(*test).js': 'coverage'
+    },
+    coverageReporter: {
+      type: 'html',
+      dir: './coverage/'
+    }
   });
 };

@@ -1,5 +1,5 @@
 # Example of flyout template
 
-You will need to customize the template to fit your needs, use the `flyout.html` as a boilerplate when customizing.
+You are provided with two options here, you can either work with the pre-built templates by using `flyout-tpls.js` or use `flyout.js` and provide your own templates.
 
-`flyout-tpls.js` is used for demonstration purposes. It loads the flyout template into the `templateCache`, this should not be used in production.
+Be aware of the directory structure, they will be requested from `/template/flyout/*.html`.

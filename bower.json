@@ -1,17 +1,18 @@
 {
-  "author": "Pascal Precht",
-  "name": "angular-component-seed",
-  "description": "Seed for reusable Angular components.",
+  "author": "Neil Fenton",
+  "name": "angular-menu-aim",
   "version": "0.1.1",
-  "homepage": "http://github.com/PascalPrecht/angular-component-seed",
+  "description": "jQuery Menu aim adopted for Angular",
+  "homepage": "https://github.com/neilff/angular-menu-aim",
   "repository": {
     "type": "git",
-    "url": "git://github.com/PascalPrecht/angular-component-seed"
+    "url": "git://github.com/neilff/angular-menu-aim"
   },
   "dependencies": {
-    "angular": "~1.2.3"
+    "angular": "1.3.15",
+    "jquery": "2.1.4"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.3"
+    "angular-mocks": "1.3.15"
   }
 }
