@@ -4,7 +4,8 @@
   "description": "jQuery Menu aim adopted for Angular",
   "main": "component.js",
   "scripts": {
-    "test": "node_modules/gulp/bin/gulp.js test"
+    "test": "node_modules/gulp/bin/gulp.js test",
+    "postinstall": "node_modules/bower/bin/bower install"
   },
   "author": {
     "name": "Neil Fenton"
