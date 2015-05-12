@@ -10,7 +10,7 @@
   "author": {
     "name": "Neil Fenton"
   },
-  "license": "WTFPL",
+  "license": "MIT",
   "devDependencies": {
     "bower": "^1.4.1",
     "chai": "1.10.0",
