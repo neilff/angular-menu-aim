@@ -6,7 +6,9 @@
 ![Circle CI Badge]
 (https://circleci.com/gh/neilff/angular-menu-aim/tree/master.png?circle-token=:circle-token)
 
-# angular-menu-flyout
+# angular-menu-aim
+
+`angular-menu-aim` is a AngularJS friendly port of jQuery Menu Aim
 
 # Usage
 

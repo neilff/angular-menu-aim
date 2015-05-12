@@ -8,4 +8,4 @@
 
 # Development
 
-Use `gulp dev` to run the development environment.
+Use `gulp serve` to run the development environment.
