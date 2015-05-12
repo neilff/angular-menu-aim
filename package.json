@@ -1,6 +1,6 @@
 {
   "name": "angular-menu-aim",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "jQuery Menu aim adopted for Angular",
   "main": "component.js",
   "scripts": {
