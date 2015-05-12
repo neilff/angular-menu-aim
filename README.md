@@ -8,7 +8,7 @@
 
 # angular-menu-aim
 
-`angular-menu-aim` is a AngularJS friendly port of jQuery Menu Aim by
+`angular-menu-aim` is a AngularJS friendly port of jQuery Menu Aim
 
 # Usage
 
