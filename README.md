@@ -1,6 +1,8 @@
+`develop` Branch:
 ![Circle CI Badge]
 (https://circleci.com/gh/neilff/angular-menu-aim/tree/develop.png?circle-token=:circle-token)
 
+`master` Branch:
 ![Circle CI Badge]
 (https://circleci.com/gh/neilff/angular-menu-aim/tree/master.png?circle-token=:circle-token)
 
