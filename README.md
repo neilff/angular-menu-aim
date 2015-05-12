@@ -12,6 +12,10 @@
 
 # Installation
 
+```
+bower install angular-menu-aim
+```
+
 1. Include `build/flyout-tpls.min.js`
 2. Link `src/flyout.css` (or copy it into your your own CSS)
 3. Include `neilff.flyout-tpls` into your Angular dependencies
