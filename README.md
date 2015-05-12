@@ -8,7 +8,14 @@
 
 # angular-menu-aim
 
-`angular-menu-aim` is a AngularJS friendly port of jQuery Menu Aim
+`angular-menu-aim` is a AngularJS friendly port of jQuery Menu Aim.
+
+# Installation
+
+1. Include `build/flyout-tpls.min.js`
+2. Link `src/flyout.css` (or copy it into your your own CSS)
+3. Include `neilff.flyout-tpls` into your Angular dependencies
+4. Use the provided HTML structure
 
 # Usage
 
