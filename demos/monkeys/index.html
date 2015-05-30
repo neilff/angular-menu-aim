@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Sandbox</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="../../src/flyout.css">
+  </head>
+  <body ng-app="app" ng-controller="MainController">
+
+    <!-- Navigation-->
+    <div class="desktop-nav hidden-xs container-fluid">
+      <div class="row top-level-navigation">
+        <div class="col-xs-12 navigation">
+          <a href="#" ng-click="toggleFlyout()" class="btn btn-primary">Reveal Menu</a>
+        </div>
+      </div>
+
+      <!-- Flyout Navigation-->
+      <flyout-navigation
+        visible="flyoutReveal">
+        <flyout-item ng-repeat="item in categories track by $index">
+          <flyout-link>
+            {{ item.name }}
+          </flyout-link>
+          <flyout-popover>
+            <p>{{ item.name }}</p>
+          </flyout-popover>
+        </flyout-item>
+      </flyout-navigation>
+    </div>
+
+    <!-- Required Libraries-->
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/angular/angular.js"></script>
+
+    <!-- Optional Libraries -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.compat.min.js"></script>
+
+    <!-- Angular Code -->
+    <script src="./app.js"></script>
+    <script src="../../src/flyout-tpls.js"></script>
+</body>
+</html>
