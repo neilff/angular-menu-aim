@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>Angular Sandbox</title>
+    <title>angular-menu-aim - Monkeys Demo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,6 +22,13 @@
         </div>
       </div>
 
+      <!--
+
+      angular-menu-aim: To have code render a flyout menu for you, use the HTML structure
+      below. You could manually type multipe <flyout-item> elements, but it is recommended
+      to use Angular's ngRepeat directive to handle that.
+
+      -->
       <!-- Flyout Navigation-->
       <flyout-navigation
         visible="flyoutReveal">
@@ -30,10 +37,17 @@
             {{ item.name }}
           </flyout-link>
           <flyout-popover>
-            <p>{{ item.name }}</p>
+            <img ng-src="img/{{ item.img }}"/>
           </flyout-popover>
         </flyout-item>
       </flyout-navigation>
+    </div>
+
+    <div class="container">
+
+      <h1>angular-menu-aim Monkeys Demo</h1>
+      <p>Click "Explore the Monkeys" above to start playing around w/ the dropdown. View source and search for "angular-menu-aim" to find all the integration points for this example.</p>
+
     </div>
 
     <!-- Required Libraries-->

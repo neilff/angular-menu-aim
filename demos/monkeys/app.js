@@ -14,40 +14,17 @@ angular.module('app.controllers', [])
      * @type {Array}
      */
     var categories = [
-      'Bedding',
-      'Buckwheat',
-      'Oranges',
-      'Blue',
-      'Cars',
-      'Trucks',
-      'Dogs',
-      'Cats',
-      'Iguana',
-      'Crocodile',
-      'Green',
-      'Black',
-      'White',
-      'Gray'
-    ];
-
-    /**
-     * Build them into lovely objects
-     *
-     * @method buildCategoryArray
-     * @param  {Integer} num How many categories
-     * @return {Array} Array of objects
-     */
-    function buildCategoryArray(num) {
-      var array = new Array(num);
-
-      for (var i = array.length - 1; i >= 0; i--) {
-        array[i] = {
-          name: _.sample(categories)
-        };
-      }
-
-      return array;
-    }
+        {name: 'Patas', img: 'img/patas.png'},
+        {name: 'Golden Snub-Nosed', img: 'img/snub-nosed.png'},
+        {name: 'Duoc Langur', img: 'img/duoc-langur.png'},
+        {name: 'Baby Pygmy Marmoset', img: 'img/pygmy.png'},
+        {name: 'Black Lion Tamarin', img: 'img/tamarin.png'},
+        {name: 'Monk Saki', img: 'img/monk.png'},
+        {name: 'Gabon Talapoin', img: 'img/gabon.png'},
+        {name: 'Grivet', img: 'img/grivet.png'},
+        {name: 'Red Leaf', img: 'img/red-leaf.png'},
+        {name: 'King Colobus', img: 'img/colobus.png'}
+      ];
 
     /**
      * Function to toggle the flyout
@@ -65,6 +42,6 @@ angular.module('app.controllers', [])
     angular.extend($scope, {
       flyoutReveal: false,
       toggleFlyout: toggleFlyout,
-      categories: buildCategoryArray(8)
+      categories: categories
     });
   });
