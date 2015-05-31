@@ -26,7 +26,14 @@
 
       angular-menu-aim: To have code render a flyout menu for you, use the HTML structure
       below. You could manually type multipe <flyout-item> elements, but it is recommended
-      to use Angular's ngRepeat directive to handle that.
+      to use Angular's ngRepeat directive to handle that. You need to keep the "track by $index"
+      statement in the ngRepeat for the mouse over effects to work.
+
+      flyout-navigation has three options that can be set:
+
+      * visible: whether the menu is initially visible when the page loads (default: false)
+      * tolerance: how much tolerance to allow when user is entering submenu (default: 500)
+      * delay: how long (in milliseconds) to wait when user is entering submenu (default: 1000)
 
       -->
       <!-- Flyout Navigation-->
@@ -37,7 +44,7 @@
             {{ item.name }}
           </flyout-link>
           <flyout-popover>
-            <img ng-src="img/{{ item.img }}"/>
+            <img ng-src="{{ item.img }}"/>
           </flyout-popover>
         </flyout-item>
       </flyout-navigation>

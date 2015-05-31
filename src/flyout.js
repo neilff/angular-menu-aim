@@ -44,7 +44,6 @@ angular
      * @return {Integer} Activation delay in MS
      */
     function activationDelay(activeRow, $menu, options) {
-      var DELAY = 1000;  // ms delay when user appears to be entering submenu
       var lastDelayLoc = null;
 
       if (!activeRow) {
@@ -155,7 +154,7 @@ angular
         // currently activated submenu. Delay before activating a
         // new menu row, because user may be moving into submenu.
         lastDelayLoc = loc;
-        return DELAY;
+        return options.delay;
       }
 
       lastDelayLoc = null;
@@ -223,6 +222,8 @@ angular
       restrict: 'E',
       scope: {
         visible: '=visible',
+        tolerance: '=tolerance',
+        delay: '=delay',
         selector: '@selector'
       },
       transclude: true,
@@ -262,13 +263,16 @@ angular
         openMenu: openMenu,
         getActiveRow: getActiveRow,
         getSelector: getSelector,
-        isVisible: isVisible
+        isVisible: isVisible,
+        getDelay: getDelay,
+        getTolerance: getTolerance
       });
     })();
 
     var timeoutId = null;
     var options = {
-      tolerance: 500
+      tolerance: getTolerance(),
+      delay: getDelay()
     };
 
     var initHeight = false;
@@ -411,6 +415,24 @@ angular
      */
     function getSelector() {
       return $scope.selector;
+    }
+
+    /**
+     * Gets the delay when user appears to be entering submenu
+     *
+     * @return {Integer} Millisecond delay when user appears to be entering submenu
+     */
+    function getDelay() {
+      return $scope.delay || 1000;
+    }
+
+    /**
+     * Gets the tolerance forgivey when entering submenu
+     *
+     * @return {Integer} Amount of forgivey when entering submenu (bigger = more)
+     */
+    function getTolerance() {
+      return $scope.tolerance || 500;
     }
 
     /**
