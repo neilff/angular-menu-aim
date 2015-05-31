@@ -269,14 +269,16 @@ angular
     return {
       restrict: 'E',
       scope: {
-        visible: '=visible',
-        tolerance: '=tolerance',
-        delay: '=delay',
-        direction: '=direction',
-        enter: '=enter',
-        exit: '=exit',
-        exitMenu: '=exitMenu',
-        selector: '@selector'
+        visible: '=',
+        tolerance: '=',
+        delay: '=',
+        direction: '=',
+        enter: '=',
+        exit: '=',
+        activate: '=',
+        deactivate: '=',
+        exitMenu: '=exitmenu',  // Angular treats camel case specially
+        selector: '@'
       },
       transclude: true,
       replace: true,

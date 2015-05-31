@@ -48,8 +48,8 @@
       <!-- Flyout Navigation-->
       <flyout-navigation
         visible="flyoutReveal"
-        direction="left"
-        exitMenu="exitMenu">
+        tolerance="760"
+        exitmenu="exitMenu">
         <flyout-item ng-repeat="item in categories track by $index">
           <flyout-link>
             {{ item.name }}
