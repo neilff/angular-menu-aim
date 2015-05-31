@@ -36,12 +36,19 @@ angular.module('app.controllers', [])
       $scope.flyoutReveal = !$scope.flyoutReveal;
     }
 
+    function exitMenu() {
+      console.log( 'Thanks for using angular-menu-aim' );
+
+      return true;
+    }
+
     /**
      * Attach scope methods and properties
      */
     angular.extend($scope, {
       flyoutReveal: false,
       toggleFlyout: toggleFlyout,
+      exitMenu: exitMenu,
       categories: categories
     });
   });

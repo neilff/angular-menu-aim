@@ -9,8 +9,15 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="app.css">
+    <!--
+
+      angular-menu-aim: All elements of the menu's appearance should be controlled
+      using the cascading style sheet.  There is a default one in src/flyout.css
+      but for more advanced menus, you will want to override some of these settings
+
+    -->
     <link rel="stylesheet" href="../../src/flyout.css">
+    <link rel="stylesheet" href="app.css">
   </head>
   <body ng-app="app" ng-controller="MainController">
 
@@ -18,7 +25,7 @@
     <div class="desktop-nav hidden-xs container-fluid">
       <div class="row top-level-navigation">
         <div class="col-xs-12 navigation">
-          <a href="#" ng-click="toggleFlyout()" class="btn btn-primary">Reveal Menu</a>
+          <a href="#" ng-click="toggleFlyout()" class="btn btn-primary">Explore the Monkeys</a>
         </div>
       </div>
 
@@ -29,16 +36,20 @@
       to use Angular's ngRepeat directive to handle that. You need to keep the "track by $index"
       statement in the ngRepeat for the mouse over effects to work.
 
-      flyout-navigation has three options that can be set:
+      flyout-navigation has several options that can be set:
 
       * visible: whether the menu is initially visible when the page loads (default: false)
+      * selector: the selector to use when building the menu (default: .popover)
       * tolerance: how much tolerance to allow when user is entering submenu (default: 500)
       * delay: how long (in milliseconds) to wait when user is entering submenu (default: 1000)
+      * direction: the direction of the submenu (right, left, below, above) (default: right)
 
       -->
       <!-- Flyout Navigation-->
       <flyout-navigation
-        visible="flyoutReveal">
+        visible="flyoutReveal"
+        direction="left"
+        exitMenu="exitMenu">
         <flyout-item ng-repeat="item in categories track by $index">
           <flyout-link>
             {{ item.name }}
