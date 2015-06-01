@@ -41,8 +41,8 @@ bower install angular-menu-aim
 # Demos
 
 1. [Simple](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/simple/index.html)
-2. [Monkeys](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/simple/index.html)
-3. [eCommerce](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/simple/index.html)
+2. [Monkeys](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/monkeys/index.html)
+3. [eCommerce](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/ecommerce/index.html)
 
 # Documentation
 
