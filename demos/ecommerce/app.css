@@ -11,7 +11,7 @@ body, html {
 .flyout-navigation {
   padding: 0;
   margin: 0;
-  background-color: darkgray;
+  background-color: white;
   border: 1px solid black;
   width: 100%;
   max-width: 275px;
@@ -37,6 +37,7 @@ body, html {
 
 .flyout-navigation .flyout-list-item {
   font-size: 18px;
+  font-weight: bold;
   text-transform: none;
 }
 

@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>angular-menu-aim - Monkeys Demo</title>
+    <title>angular-menu-aim - eCommerce Demo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,7 +25,7 @@
     <div class="desktop-nav hidden-xs container-fluid">
       <div class="row top-level-navigation">
         <div class="col-xs-12 navigation">
-          <a href="#" ng-click="toggleFlyout()" class="btn btn-primary">Explore the Monkeys</a>
+          <a href="#" ng-click="toggleFlyout()" ng-mouseenter="toggleFlyout()" class="btn btn-primary">Shop By Department</a>
         </div>
       </div>
 
@@ -58,14 +58,16 @@
         activate="activateRow"
         delay="300"
         tolerance="75">
-        <flyout-item ng-repeat="item in categories track by $index">
+        <flyout-item ng-repeat="dept in departments track by $index">
           <flyout-link>
-            {{ item.name }}
+            {{ dept.name }}
           </flyout-link>
           <flyout-popover>
-            <h3 class="popover-title">{{ item.name }}</h3>
-            <div class="popover-content">
-            <img ng-src="{{ item.img }}"/>
+            <div ng-repeat="category in dept.categories">
+            <h3>{{ category.name }}</h3>
+            <div ng-repeat="subcategory in category.subcategories">
+              <a ng-link="{{ subcategory.link }}">{{ subcategory.name }}</a>
+            </div>
             </div>
           </flyout-popover>
         </flyout-item>
@@ -74,8 +76,8 @@
 
     <div class="container">
 
-      <h1>angular-menu-aim Monkeys Demo</h1>
-      <p>Click "Explore the Monkeys" above to start playing around w/ the dropdown. View source and search for "angular-menu-aim" to find all the integration points for this example.</p>
+      <h1>angular-menu-aim eCommerce Demo</h1>
+      <p>Hover over "Shop By Department" above to start playing around w/ the dropdown. View source and search for "angular-menu-aim" to find all the integration points for this example.</p>
 
     </div>
 

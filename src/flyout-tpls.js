@@ -45,7 +45,8 @@ angular
   .module('template/flyout/flyout-link.html', [])
   .run(['$templateCache', function($templateCache) {
     $templateCache.put('template/flyout/flyout-link.html',
-      '<a href="" ng-mouseenter="mouseenterRow($index)" ng-mouseleave="mouseleaveRow($index)" ng-click="clickRow($index);" ng-transclude></a>'
+      '<a href="" ng-mouseenter="mouseenterRow($index)" ' +
+      'ng-mouseleave="mouseleaveRow($index)" ng-click="clickRow($index);" ng-transclude></a>'
     );
   }]);
 
@@ -277,7 +278,7 @@ angular
         exit: '=',
         activate: '=',
         deactivate: '=',
-        exitMenu: '=exitmenu',  // Angular treats camel case specially
+        exitmenu: '=exitmenu',  // Angular treats camel case specially
         selector: '@'
       },
       transclude: true,
@@ -331,7 +332,7 @@ angular
       exit: getExit(),
       activate: getActivate(),
       deactivate: getDeactivate(),
-      exitMenu: getExitMenu()
+      exitmenu: getExitMenu()
     };
 
     var initHeight = false;
@@ -358,7 +359,7 @@ angular
         clearTimeout(timeoutId);
       }
 
-      if (options.exitMenu(this)) {
+      if (options.exitmenu(this)) {
         if (vm.activeRow) {
           options.deactivate(vm.activeRow);
         }
@@ -532,7 +533,7 @@ angular
      * @return {Function} Callback function to call when row is exited
      */
     function getExit() {
-      return $scope.exit || $.noop;
+      return $scope.exit || angular.noop;
     }
 
     /**
@@ -554,7 +555,7 @@ angular
      * @return {Function} Callback function to call when menu is exited
      */
     function getExitMenu() {
-      return $scope.exitMenu || function() {
+      return $scope.exitmenu || function() {
           closeMenu();
 
           return true;
@@ -567,7 +568,7 @@ angular
      * @return {Function} Callback function to call when row is deactivated
      */
     function getDeactivate() {
-      return $scope.deactivate || $.noop;
+      return $scope.deactivate || angular.noop;
     }
 
     /**
