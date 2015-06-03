@@ -6,35 +6,12 @@ angular.module('app', [
 ]);
 
 angular.module('app.controllers', [])
-  .controller('MainController', function($scope) {
+  .controller('MainController', function($scope, $http) {
 
     /**
-     * Create some sample departments; read this from external resource in production application
-     *
-     * @type {Array}
+     * read JSON menu data
      */
-    var departments = [
-        {
-          name: 'Books',
-          img: null,
-          categories: [
-            {
-              name: 'Fiction',
-              link: 'fiction',
-              subcategories: [
-                {
-                  name: 'Suspense',
-                  link: 'fiction/suspense'
-                }
-              ]
-            }
-          ]
-        },
-        {name: 'Movies'},
-        {name: 'Home'},
-        {name: 'Health'},
-        {name: 'Toys'}
-      ];
+    $http.get('departments.json').then(handleResponse, handleResponse);
 
     /**
      * Function to toggle the flyout
@@ -46,15 +23,17 @@ angular.module('app.controllers', [])
       $scope.flyoutReveal = !$scope.flyoutReveal;
     }
 
-    /**
-     * Attach scope methods and properties
-     */
-    angular.extend($scope, {
-      flyoutReveal: false,
-      toggleFlyout: toggleFlyout,
-      exitMenu: $.noop,
-      enterRow: $.noop,
-      activateRow: $.noop,
-      departments: departments
-    });
+    function handleResponse(response) {
+      /**
+       * Attach scope methods and properties
+       */
+      angular.extend($scope, {
+        flyoutReveal: false,
+        toggleFlyout: toggleFlyout,
+        exitMenu: angular.noop,
+        enterRow: angular.noop,
+        activateRow: angular.noop,
+        departments: response.data
+      });
+    }
   });

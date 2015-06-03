@@ -64,11 +64,12 @@
           </flyout-link>
           <flyout-popover>
             <div ng-repeat="category in dept.categories">
-            <h3>{{ category.name }}</h3>
-            <div ng-repeat="subcategory in category.subcategories">
-              <a ng-link="{{ subcategory.link }}">{{ subcategory.name }}</a>
+            <h4>{{ category.name }}</h4>
+              <div ng-repeat="subcategory in category.subcategories">
+                <a ng-href="{{ subcategory.link }}">{{ subcategory.name }}</a>
+              </div>
             </div>
-            </div>
+            <img ng-src="{{ dept.img }}" height="200px" style="float: right;"/>
           </flyout-popover>
         </flyout-item>
       </flyout-navigation>
