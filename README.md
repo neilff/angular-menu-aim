@@ -38,6 +38,12 @@ bower install angular-menu-aim
 </flyout-navigation>
 ```
 
+# Demos
+
+1. [Simple](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/simple/index.html)
+2. [Monkeys](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/monkeys/index.html)
+3. [eCommerce](http://rawgit.com/ErinsMatthew/angular-menu-aim/examples/demos/ecommerce/index.html)
+
 # Documentation
 
 ###### `<flyout-navigation></flyout-navigation>`
@@ -46,6 +52,14 @@ Refers to the wrapper for the navigation menu, supports the following properties
 
 - `visible {Boolean} (required)` - Is the menu visible or not. Used to trigger menu visiblity from a button.
 - `selector {String} (optional)` - CSS selector for the `flyout-item`. Defaults to `popover`.
+- `tolerance {Integer} (optional)` - how much tolerance to allow when user is entering submenu (default: 500)
+- `delay {Integer} (optional)` - how long (in milliseconds) to wait when user is entering submenu (default: 1000)
+- `direction {String} (optional)` - the direction of the submenu (right, left, below, above) (default: right)
+- `enter {Function} (optional)` - callback to execute when row is entered (default: set menu height)
+- `exit {Function} (optional)` - callback to execute when row is exited (default: nothing)
+- `activate {Function} (optional)` - callback to execute when row is activated (default: set menu height)
+- `deactivate {Function} (optional)` - callback to execute when row is deactivated (default: nothing)
+- `exitmenu {Function} (optional)` - callback to execute when user exits the menu (default: close menu)
 
 ###### `<flyout-item></flyout-item>`
 

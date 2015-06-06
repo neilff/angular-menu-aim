@@ -45,7 +45,8 @@ angular
   .module('template/flyout/flyout-link.html', [])
   .run(['$templateCache', function($templateCache) {
     $templateCache.put('template/flyout/flyout-link.html',
-      '<a href="" ng-mouseenter="mouseenterRow($index)" ng-click="clickRow($index);" ng-transclude></a>'
+      '<a href="" ng-mouseenter="mouseenterRow($index)" ' +
+      'ng-mouseleave="mouseleaveRow($index)" ng-click="clickRow($index);" ng-transclude></a>'
     );
   }]);
 
@@ -73,6 +74,7 @@ angular
 
       angular.extend(scope, {
         mouseenterRow: flyoutCtrl.mouseenterRow,
+        mouseleaveRow: flyoutCtrl.mouseleaveRow,
         clickRow: flyoutCtrl.clickRow
       });
     };
@@ -91,7 +93,6 @@ angular
      * @return {Integer} Activation delay in MS
      */
     function activationDelay(activeRow, $menu, options) {
-      var DELAY = 1000;  // ms delay when user appears to be entering submenu
       var lastDelayLoc = null;
 
       if (!activeRow) {
@@ -202,7 +203,7 @@ angular
         // currently activated submenu. Delay before activating a
         // new menu row, because user may be moving into submenu.
         lastDelayLoc = loc;
-        return DELAY;
+        return options.delay;
       }
 
       lastDelayLoc = null;
@@ -269,8 +270,16 @@ angular
     return {
       restrict: 'E',
       scope: {
-        visible: '=visible',
-        selector: '@selector'
+        visible: '=',
+        tolerance: '=',
+        delay: '=',
+        direction: '=',
+        enter: '=',
+        exit: '=',
+        activate: '=',
+        deactivate: '=',
+        exitmenu: '=exitmenu',  // Angular treats camel case specially
+        selector: '@'
       },
       transclude: true,
       replace: true,
@@ -304,6 +313,7 @@ angular
       angular.extend(vm, {
         mouseleaveMenu: mouseleaveMenu,
         mouseenterRow: mouseenterRow,
+        mouseleaveRow: mouseleaveRow,
         clickRow: clickRow,
         closeMenu: closeMenu,
         openMenu: openMenu,
@@ -315,7 +325,14 @@ angular
 
     var timeoutId = null;
     var options = {
-      tolerance: 500
+      submenuDirection: getDirection(),
+      tolerance: getTolerance(),
+      delay: getDelay(),
+      enter: getEnter(),
+      exit: getExit(),
+      activate: getActivate(),
+      deactivate: getDeactivate(),
+      exitmenu: getExitMenu()
     };
 
     var initHeight = false;
@@ -342,8 +359,13 @@ angular
         clearTimeout(timeoutId);
       }
 
-      closeMenu();
-      vm.activeRow = null;
+      if (options.exitmenu(this)) {
+        if (vm.activeRow) {
+          options.deactivate(vm.activeRow);
+        }
+
+        vm.activeRow = null;
+      }
     }
 
     /**
@@ -356,15 +378,23 @@ angular
      * @return {undefined} undefined
      */
     function mouseenterRow(row) {
-      if (!initHeight) {
-        setPopoverHeight();
-      }
-
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
 
+      options.enter(row);
       possiblyActivate(row);
+    }
+
+    /**
+     * Trigger when user exits a row.
+     *
+     * @method mouseleaveRow
+     * @param  {Integer} row Row index to activate
+     * @return {undefined} undefined
+     */
+    function mouseleaveRow(row) {
+      options.exit(row);
     }
 
     /**
@@ -377,10 +407,6 @@ angular
      * @return {undefined} undefined
      */
     function clickRow(row) {
-      if (!initHeight) {
-        setPopoverHeight();
-      }
-
       activate(row);
     }
 
@@ -417,9 +443,10 @@ angular
       }
 
       if (vm.activeRow) {
-        vm.activeRow = null;
+        options.deactivate(vm.activeRow);
       }
 
+      options.activate(row);
       vm.activeRow = row;
     }
 
@@ -458,6 +485,90 @@ angular
      */
     function getSelector() {
       return $scope.selector;
+    }
+
+    /**
+     * Gets the delay when user appears to be entering submenu
+     *
+     * @return {Integer} Millisecond delay when user appears to be entering submenu
+     */
+    function getDelay() {
+      return $scope.delay || 1000;
+    }
+
+    /**
+     * Gets the tolerance forgivey when entering submenu
+     *
+     * @return {Integer} Amount of forgivey when entering submenu (bigger = more)
+     */
+    function getTolerance() {
+      return $scope.tolerance || 500;
+    }
+
+    /**
+     * Gets the direction for the submenu
+     *
+     * @return {String} Direction of submenu (one of: right, left, below, above)
+     */
+    function getDirection() {
+      return $scope.direction || 'right';
+    }
+
+    /**
+     * Gets callback function to call when a row is entered
+     *
+     * @return {Function} Callback function to call when row is entered
+     */
+    function getEnter() {
+      return $scope.enter || function() {
+          if (!initHeight) {
+            setPopoverHeight();
+          }
+        };
+    }
+
+    /**
+     * Gets callback function to call when a row is exited
+     *
+     * @return {Function} Callback function to call when row is exited
+     */
+    function getExit() {
+      return $scope.exit || angular.noop;
+    }
+
+    /**
+     * Gets callback function to call when a row is clicked
+     *
+     * @return {Function} Callback function to call when row is clicked
+     */
+    function getActivate() {
+      return $scope.activate || function() {
+          if (!initHeight) {
+            setPopoverHeight();
+          }
+        };
+    }
+
+    /**
+     * Gets callback function to call when the menu is exited
+     *
+     * @return {Function} Callback function to call when menu is exited
+     */
+    function getExitMenu() {
+      return $scope.exitmenu || function() {
+          closeMenu();
+
+          return true;
+        };
+    }
+
+    /**
+     * Gets callback function to call when a row is deactivated
+     *
+     * @return {Function} Callback function to call when row is deactivated
+     */
+    function getDeactivate() {
+      return $scope.deactivate || angular.noop;
     }
 
     /**

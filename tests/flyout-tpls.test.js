@@ -30,6 +30,7 @@ describe('neilff.flyout-tpls', function() {
       expect(ctrl, 'FlyoutController').to.be.defined;
       expect(ctrl.mouseleaveMenu, 'FlyoutController.mouseleaveMenu').to.be.defined;
       expect(ctrl.mouseenterRow, 'FlyoutController.mouseenterRow').to.be.defined;
+      expect(ctrl.mouseleaveRow, 'FlyoutController.mouseleaveRow').to.be.defined;
       expect(ctrl.clickRow, 'FlyoutController.clickRow').to.be.defined;
       expect(ctrl.closeMenu, 'FlyoutController.closeMenu').to.be.defined;
       expect(ctrl.openMenu, 'FlyoutController.openMenu').to.be.defined;
@@ -68,6 +69,13 @@ describe('neilff.flyout-tpls', function() {
       expect(ctrl.getActiveRow()).to.equal(0);
       ctrl.mouseenterRow(1);
       expect(ctrl.getActiveRow()).to.equal(1);
+    });
+
+    it('should hide the popover when the mouseleaveRow function is called', function() {
+      ctrl.mouseenterRow(0);
+      expect(ctrl.getActiveRow()).to.equal(0);
+      ctrl.mouseleaveRow(0);
+      expect(ctrl.isVisible()).to.equal(false);
     });
 
     it('should not set the row if a delay is calculated', function() {

@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Books",
+    "img": "img/books.jpg",
+    "categories": [
+      {
+        "name": "Fiction",
+        "link": "#fiction",
+        "subcategories": [
+          {
+            "name": "Suspense",
+            "link": "#fiction/suspense"
+          },
+          {
+            "name": "Science-Fiction",
+            "link": "#fiction/scifi"
+          }
+        ]
+      },
+      {
+        "name": "Non-Fiction",
+        "link": "#nonfiction",
+        "subcategories": [
+          {
+            "name": "Cookbooks",
+            "link": "#nonfiction/cookbooks"
+          },
+          {
+            "name": "Textbooks",
+            "link": "#nonfiction/textbooks"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Movies",
+    "img": "img/movies.jpg",
+    "categories": [
+      {
+        "name": "Blu-ray &amp; DVD",
+        "link": "#disc",
+        "subcategories": [
+          {
+            "name": "Action",
+            "link": "#disc/action"
+          },
+          {
+            "name": "Horror",
+            "link": "#disc/horror"
+          }
+        ]
+      },
+      {
+        "name": "Digital",
+        "link": "#digital",
+        "subcategories": [
+          {
+            "name": "Streaming",
+            "link": "#digital/streaming"
+          },
+          {
+            "name": "Download",
+            "link": "#digital/download"
+          }
+        ]
+      }
+    ]
+  }
+]

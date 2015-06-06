@@ -14,18 +14,18 @@ gulp.task('connect', false, function() {
 });
 
 gulp.task('html', false, function () {
-  gulp.src('./demo/*.html')
+  gulp.src('./demos/simple/*.html')
     .pipe(connect.reload());
 });
 
 gulp.task('js', false, function () {
-  gulp.src('./demo/*.js')
+  gulp.src('./demos/simple/*.js')
     .pipe(connect.reload());
 });
 
 gulp.task('watch', false, function () {
-  gulp.watch(['./demo/*.html'], ['html']);
-  gulp.watch(['./demo/*.js'], ['js']);
+  gulp.watch(['./demos/simple/*.html'], ['html']);
+  gulp.watch(['./demos/simple/*.js'], ['js']);
 });
 
 gulp.task('lint', false, function () {

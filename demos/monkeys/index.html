@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>angular-menu-aim - Monkeys Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700' rel='stylesheet' type='text/css'>
+
+    <!--
+
+      angular-menu-aim: All elements of the menu's appearance should be controlled
+      using the cascading style sheet.  There is a default one in src/flyout.css
+      but for more advanced menus, you will want to override some of these settings
+
+    -->
+    <link rel="stylesheet" href="../../src/flyout.css">
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body ng-app="app" ng-controller="MainController">
+
+    <!-- Navigation-->
+    <div class="desktop-nav hidden-xs container-fluid">
+      <div class="row top-level-navigation">
+        <div class="col-xs-12 navigation">
+          <a href="#" ng-click="toggleFlyout()" class="btn btn-primary">Explore the Monkeys</a>
+        </div>
+      </div>
+
+      <!--
+
+      angular-menu-aim: To have code render a flyout menu for you, use the HTML structure
+      below. You could manually type multipe <flyout-item> elements, but it is recommended
+      to use Angular's ngRepeat directive to handle that. You need to keep the "track by $index"
+      statement in the ngRepeat for the mouse over effects to work.
+
+      flyout-navigation has several options that can be set:
+
+      * visible: whether the menu is initially visible when the page loads (default: false)
+      * tolerance: how much tolerance to allow when user is entering submenu (default: 500)
+      * delay: how long (in milliseconds) to wait when user is entering submenu (default: 1000)
+      * direction: the direction of the submenu (right, left, below, above) (default: right)
+      * enter: callback to execute when row is entered (default: set menu height)
+      * exit: callback to execute when row is exited (default: nothing)
+      * activate: callback to execute when row is activated (default: set menu height)
+      * deactivate: callback to execute when row is deactivated (default: nothing)
+      * exitmenu: callback to execute when user exits the menu (default: close menu)
+      * selector: the selector to use when building the menu (default: popover)
+
+      -->
+      <!-- Flyout Navigation-->
+      <flyout-navigation
+        visible="flyoutReveal"
+        direction="left"
+        enter="enterRow"
+        activate="activateRow"
+        delay="300"
+        tolerance="75">
+        <flyout-item ng-repeat="item in categories track by $index">
+          <flyout-link>
+            {{ item.name }}
+          </flyout-link>
+          <flyout-popover>
+            <h3 class="popover-title">{{ item.name }}</h3>
+            <div class="popover-content">
+            <img ng-src="{{ item.img }}"/>
+            </div>
+          </flyout-popover>
+        </flyout-item>
+      </flyout-navigation>
+    </div>
+
+    <div class="container">
+
+      <h1>angular-menu-aim Monkeys Demo</h1>
+      <p>Click "Explore the Monkeys" above to start playing around w/ the dropdown. View source and search for "angular-menu-aim" to find all the integration points for this example.</p>
+
+    </div>
+
+    <!-- Required Libraries-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+
+    <!-- Optional Libraries -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.compat.min.js"></script>
+
+    <!-- Angular Code -->
+    <script src="./app.js"></script>
+    <script src="../../src/flyout-tpls.js"></script>
+</body>
+</html>
