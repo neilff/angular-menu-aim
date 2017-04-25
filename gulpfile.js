@@ -1,12 +1,7 @@
 var gulp = require('gulp-help')(require('gulp'));
-var eslint = require('gulp-eslint');
-var karma = require('gulp-karma');
-var connect = require('gulp-connect');
-var uglify = require('gulp-uglify');
-var ngAnnotate = require('gulp-ng-annotate');
-var rename = require('gulp-rename');
 
 gulp.task('connect', false, function() {
+  var connect = require('gulp-connect');
   connect.server({
     root: './',
     livereload: true
@@ -29,6 +24,7 @@ gulp.task('watch', false, function () {
 });
 
 gulp.task('lint', false, function () {
+  var eslint = require('gulp-eslint');
   return gulp.src(['src/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
@@ -36,6 +32,8 @@ gulp.task('lint', false, function () {
 });
 
 gulp.task('test', 'Runs karma and lints code.', ['lint'], function() {
+  var karma = require('gulp-karma');
+
   var testFiles = [
     'bower_components/jquery/dist/jquery.js',
     'bower_components/angular/angular.js',
@@ -54,13 +52,26 @@ gulp.task('test', 'Runs karma and lints code.', ['lint'], function() {
     });
 });
 
-gulp.task('build', 'Builds project (concat, ngmin, uglify).', function () {
-  return gulp.src('src/*.js')
+gulp.task('css', function () {
+  var rename = require('gulp-rename');
+
+  return gulp.src('src/flyout.css')
+    .pipe(rename('neilff-flyout.css'))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('build', 'Builds project (concat, ngmin, uglify).', ['css'], function () {
+  var uglify = require('gulp-uglify');
+  var ngAnnotate = require('gulp-ng-annotate');
+  var rename = require('gulp-rename');
+  var concat = require('gulp-concat');
+
+  return gulp.src(['src/flyout-tpls.js', 'src/flyout.js'])
     .pipe(ngAnnotate())
+    .pipe(concat('neilff-flyout.js'))
+    .pipe(gulp.dest('build'))
     .pipe(uglify())
-    .pipe(rename({
-      extname: '.min.js'
-    }))
+    .pipe(rename({ extname: '.min.js' }))
     .pipe(gulp.dest('build'));
 });
 

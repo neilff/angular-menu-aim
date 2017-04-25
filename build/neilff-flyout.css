@@ -1,0 +1,59 @@
+.flyout-navigation {
+  padding: 0;
+  margin: 0;
+  background-color: smoke;
+  border: 1px solid black;
+  width: 100%;
+  max-width: 275px;
+  position: absolute;
+  top: 64px;
+  left: -100%;
+  transition: all 300ms;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.flyout-navigation.reveal {
+  left: 0;
+}
+
+.flyout-navigation .flyout-dropdown {
+  width: 100%;
+}
+
+.flyout-navigation .flyout-dropdown a {
+  color: black;
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+}
+
+.flyout-navigation .flyout-dropdown a:hover {
+  background: #efefef;
+  text-decoration: none;
+}
+
+.flyout-navigation .flyout-list-item {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.flyout-navigation .popover {
+  border: 1px solid black;
+  margin: 0;
+  padding: 15px;
+  border-radius: 0;
+  box-shadow: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: left 300ms;
+  width: 100%;
+  max-width: 275px;
+}
+
+.flyout-navigation .popover.reveal {
+  display: block;
+  top: -1px;
+  left: 273px;
+}
