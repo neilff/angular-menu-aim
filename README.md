@@ -1,11 +1,3 @@
-`develop`
-![Circle CI Badge]
-(https://circleci.com/gh/neilff/angular-menu-aim/tree/develop.png?circle-token=:circle-token)
-
-`master`
-![Circle CI Badge]
-(https://circleci.com/gh/neilff/angular-menu-aim/tree/master.png?circle-token=:circle-token)
-
 # angular-menu-aim
 
 `angular-menu-aim` is a AngularJS friendly port of jQuery Menu Aim.
